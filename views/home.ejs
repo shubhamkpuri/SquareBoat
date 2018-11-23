@@ -1,0 +1,79 @@
+<% include ./partials/header %>
+
+<div class="container">
+  <div class="row m-3">
+    <%# left spacing %>
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6 rounded border">
+      <div class="tab-content m-2">
+        <%# nav-pills type toggle for login form and signup form %>
+        <ul class="nav nav-pills nav-justified">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#home">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#menu1">Sign Up</a>
+          </li>
+        </ul>
+        <div class="tab-pane container active p-3" id="home">
+          <%# login form %>
+          <form onsubmit="login()">
+            <%# Email id %>
+            <div class="form-group">
+              <label for="li_email">Email address:</label>
+              <input type="email" class="form-control" id="li_email">
+            </div>
+            <%# password %>
+            <div class="form-group">
+              <label for="li_pwd">Password:</label>
+              <input type="password" class="form-control" id="li_pwd">
+            </div>
+            <small id="loginerror" class="text-danger "></small>
+          <div></div>
+            <button type="submit" class="btn btn-danger">Submit</button>
+          </form>
+          <%# login form end %>
+        </div>
+        <div class="tab-pane container fade p-3" id="menu1">
+          <%# signup form %>
+          <form onsubmit="createuser()">
+            <%# Name %>
+            <div class="form-group">
+              <label for="su_name">Name :</label>
+              <input type="text" class="form-control" id="su_name">
+              <small id="nameerror" class="text-danger "></small>
+            </div>
+            <%# Email id %>
+            <div class="form-group">
+              <label for="su_email">Email address:</label>
+              <input type="email" class="form-control" id="su_email" required>
+              <small id="emailerror" class="text-danger "></small>
+            </div>
+            <%# password %>
+            <div class="form-group">
+              <label for="su_pwd">Password:</label>
+              <input type="password" class="form-control" id="su_pwd">
+              <small id="su_pwderror" class="text-danger "></small>
+            </div>
+            <%# Job type %>
+            <div class="form-group">
+              <label for="sel1">Select list:</label>
+              <select class="form-control" id="su_type">
+                <option value="1">Job Seeker</option>
+                <option value="2">Company</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-danger">Submit</button>
+          </form>
+          <%# signup form end %>
+        </div>
+      </div>
+    </div>
+    <%# spacing %>
+    <div class="col-sm-3"></div>
+
+  </div>
+  <!-- Tab panes -->
+  <script type="text/javascript" src="/javascript/login-ajax.js"></script>
+  <script type="text/javascript" src="/javascript/signup-ajax.js"></script>
+  <% include ./partials/footer %>

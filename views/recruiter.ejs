@@ -1,0 +1,55 @@
+<% include ./partials/header %>
+
+<div class="container ">
+  <div class="p-2">
+    <a class="btn btn-danger float-right" href="/dashboard/addjob">Post a job</a>
+
+    <h3> Hello Recruiter </h3>
+    <div>Previous Jobs :</div>
+    <ul class="list-group mt-1">
+      <%# iterating for each job in jobs array %>
+      <%  var i=0;
+      jobs.forEach((job)=> { %>
+      <li class="list-group-item border">
+      <%# javascript code to find how many total applications have been posted
+      %>
+        <%
+        var noofapl =0;
+        var aplicationarray = JSON.parse(job.applications);
+        noofapl = aplicationarray.length;
+        %>
+        <small class="float-right">- by <%= job.company_name%><br>On <%= job.date%></small>
+
+        <h4>
+          <%= job.job_title%>
+        </h4>
+        Description:
+        <p><%= job.description%>
+        </p>
+        <%# javascript loop to put each application in collaspable div for this particular jobs
+        %>
+        <div data-toggle="collapse" data-target=<%=`#demo${i}`%> class="border mt-1 p-2 applicationnumber">Applications <span class=" float-right badge badge-info">
+            <%= noofapl %></span></div>
+        <div id=<%=`demo${i}`%> class="collapse">
+        <%
+        aplicationarray.forEach((application)=> { %>
+          <div class="media border p-3">
+            <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:45px;">
+            <div class="media-body">
+              <h6><%= application.name%> </h6>
+              <p><%= application.email%> </p>
+            </div>
+          </div>
+
+
+          <% }) %>
+        </div>
+      </li>
+      <% i+=1; }) %>
+    </ul>
+  </div>
+
+
+
+</div>
+<% include ./partials/footer %>

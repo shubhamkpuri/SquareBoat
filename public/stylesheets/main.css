@@ -1,0 +1,38 @@
+* {
+  font-family: 'Source Serif Pro', serif;
+  font-size: 1.1rem;
+}
+
+.navbar-brand {
+  font-family: 'Lobster', cursive;
+  font-size: 1.5rem;
+}
+
+.nav-pills .nav-link {
+  color: #888;
+  background-color: #eee;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  background-color: #DE6262;
+}
+
+.bg-dark1 {
+  background-color: #DE6262;
+}
+
+.applicationnumber {
+  cursor: pointer;
+}
+p{
+  text-align: justify;
+  text-justify: inter-word;
+}
+@media only screen and (max-width: 600px) {
+  .username {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 175px;
+  }
+}

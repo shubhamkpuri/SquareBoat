@@ -1,0 +1,31 @@
+<% include ./partials/header %>
+<%# Job addition form %>
+<div class="container ">
+  <div class="w-75 mx-auto m-3">
+    <h3>Add a Job</h3>
+    <form onsubmit="submitjob()">
+      <div class="form-group">
+        <label for="jobtitle">Job Title:</label>
+        <input type="text" class="form-control" id="jobtitle">
+        <small id="joberror" class="text-danger "></small>
+      </div>
+      <div class="form-group">
+        <label for="company">Company Name:</label>
+        <input type="text" class="form-control" id="company">
+        <small id="companyerror" class="text-danger "></small>
+
+      </div>
+      <div class="form-group">
+        <label for="des">Description:</label>
+        <textarea class="form-control" id="des"></textarea>
+        <small id="deserror" class="text-danger "></small>
+
+      </div>
+
+      <button type="submit" class="btn btn-danger">Submit</button>
+    </form>
+  </div>
+</div>
+<%# script for sending form details through js %>
+<script src="/javascript/submitjob-ajax.js" charset="utf-8"></script>
+<% include ./partials/footer %>

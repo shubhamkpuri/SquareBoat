@@ -1,0 +1,60 @@
+<% include ./partials/header %>
+
+<div class="container ">
+  <div class="p-2">
+
+    <div>Jobs for you:</div>
+    <ul class="list-group mt-1">
+    <%# iterating for each job in jobs array %>
+    <%  jobs.forEach((job)=> { %>
+            <li class="list-group-item">
+            <%# javascript code to check wether current loggedIn user have applied for this particular job or not
+             and how many total applications have been posted
+            %>
+            <%
+                  var noofapl ,alreadyApplied=0;
+                  var aplicationarray = JSON.parse(job.applications); //coverting string to array
+                  noofapl = aplicationarray.length;   // number of applications
+                  aplicationarray.forEach((applieduser)=>{
+                    if(user.id == applieduser.id){ //if current user have applied or not ?
+                      alreadyApplied =1;
+                    }
+                  })
+              %>
+            <%# comany name %>
+              <small class="float-right">
+                -by <%= job.company_name%>
+                    <br>
+                On <%= job.date%>
+              </small>
+              <h4>
+                <%= job.job_title%>
+              </h4>
+              Description:
+              <p>
+                <%= job.description%>
+              </p>
+              <%
+                if(alreadyApplied){
+              %>
+                <a href="#" class="btn btn-secondary" disabled>Already Applied</a>
+              <%
+                }else{
+               %>
+              <a href="/apply/<%=job.id %>" class="btn btn-danger">Apply now</a>
+              <%
+                }
+             %>
+
+              <span class="text-muted float-right">Total <span class="badge badge-primary">
+                  <%= noofapl %></span> applications received</span>
+            </li>
+    <% }) %>
+    </ul>
+  </div>
+
+
+
+</div>
+
+<% include ./partials/footer %>
